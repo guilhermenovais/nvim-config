@@ -626,5 +626,18 @@ vim.keymap.set('n', '<leader>t', require('nvim-tree.api').tree.toggle, { desc = 
 -- Open nvim tree at initialization
 require('nvim-tree.api').tree.open()
 
+function DiffviewToggle()
+  local lib = require('diffview.lib')
+  local view = lib.get_current_view()
+  if view then
+    -- Current tabpage is a Diffview; close it
+    vim.cmd(":DiffviewClose")
+  else
+    -- No open Diffview exists: open a new one
+    vim.cmd(":DiffviewOpen")
+  end
+end
+vim.keymap.set('n', '<leader>d', DiffviewToggle, { desc = 'Toggle Diffview' })
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
