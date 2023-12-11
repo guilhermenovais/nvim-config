@@ -620,7 +620,11 @@ cmp.setup {
   },
 }
 
+-- Nvim tree setup
 require("nvim-tree").setup {}
+vim.keymap.set('n', '<leader>t', require('nvim-tree.api').tree.toggle, { desc = 'Toggle Nvim Tree' })
+-- Open nvim tree at initialization
+require('nvim-tree.api').tree.open()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
