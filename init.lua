@@ -275,6 +275,9 @@ vim.o.clipboard = 'unnamedplus'
 -- Enable break indent
 vim.o.breakindent = true
 
+-- Enable smart indent
+vim.o.smartindent = true
+
 -- Save undo history
 vim.o.undofile = true
 
@@ -310,6 +313,10 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous dia
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+-- Auto-indent pasted content
+vim.keymap.set('n', 'p', "p=']^")
+vim.keymap.set('n', 'P', "P='[^")
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
