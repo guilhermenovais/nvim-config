@@ -506,7 +506,7 @@ local servers = {
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
-  -- tsserver = {},
+  tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
   lua_ls = {
@@ -517,6 +517,7 @@ local servers = {
       -- diagnostics = { disable = { 'missing-fields' } },
     },
   },
+  volar = {}
 }
 
 -- Setup neovim lua configuration
@@ -543,6 +544,18 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
+
+require("lspconfig").volar.setup({
+  filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+  init_options = {
+    vue = {
+      hybridMode = false,
+    },
+    typescript = {
+    tsdk = vim.fn.getcwd() .. "/node_modules/typescript/lib",
+    },
+  },
+})
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
