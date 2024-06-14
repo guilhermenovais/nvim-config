@@ -517,7 +517,8 @@ local servers = {
       -- diagnostics = { disable = { 'missing-fields' } },
     },
   },
-  volar = {}
+  volar = {},
+  clangd = {}
 }
 
 -- Setup neovim lua configuration
@@ -545,7 +546,9 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
-require("lspconfig").volar.setup({
+local lspconfig = require("lspconfig")
+
+lspconfig.volar.setup({
   filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
   init_options = {
     vue = {
